@@ -45,3 +45,39 @@ This persistent cache supports per-row TTL. This means per each key value a cach
 **Persistent Loading Cache**
 
 Persistent Loading Caching supports cache loader and TTL features. When the data in the cache is not available or expired, the data will be loaded from the cache loader to the cache. This cache should be created using the PersistentCacheFactory by calling the createLoadingCache method. Cache name, file path, max log file size, cache expiry time, cache expiry time unit and cache loader are the parameters that needs to be passed when creating the cache. The CacheLoader interface has a load method which needs to be implemented. The user can specify custom cache loaders as needed.
+
+**PersistentCacheFactory**
+
+|**Modifier and Type** | **Method and Description**|
+|----------------------|---------------------------|
+| static <K extends java.io.Serializable,V extends java.io.Serializable>com.leondesilva.persistentcache.cache.PersistentCache<K,V> | **createCache** (java.lang.String dbName, java.lang.String dbFilePath, long maxLogFileSize)Creates an instance of the PersistentCache |
+| static <K extends java.io.Serializable,V extends java.io.Serializable>com.leondesilva.persistentcache.cache.PersistentCache<K,V> | **createLoadingCache** (java.lang.String dbName, java.lang.String dbFilePath, long maxLogFileSize, long cacheExpiryTime, java.time.temporal.ChronoUnit cacheExpiryTimeUnit, com.leondesilva.persistentcache.cache.loaders.CacheLoader<K,V> cacheLoader)Creates an instance of the Persistent loading cache with TTL |
+| static <K extends java.io.Serializable,V extends java.io.Serializable>com.leondesilva.persistentcache.cache.PersistentCache<K,V> | **createPerRowTTLCache** (java.lang.String dbName, java.lang.String dbFilePath, long maxLogFileSize)Creates an instance of the PersistentCache with per row TTL |
+| static <K extends java.io.Serializable,V extends java.io.Serializable>com.leondesilva.persistentcache.cache.PersistentCache<K,V> | **createTTLCache** (java.lang.String dbName, java.lang.String dbFilePath, long maxLogFileSize, long cacheExpiryTime, java.time.temporal.ChronoUnit cacheExpiryTimeUnit)Creates an instance of the PersistentCache with TTL |
+
+
+**Persistent Cache Interface**
+
+| **Modifier and Type** | **Method and Description** |
+| ----------------------|----------------------------|
+| void | **close** ()Method to close the cache. |
+| boolean | **containsKey** ( **K** key)Method to check whether the cache contains the key. |
+| boolean | **delete** ( **K** key)Method to delete the record for a given key. |
+| boolean | **delete** (java.util.List< **K** > keys)Method to delete a list of given keys. |
+| boolean | **deleteAll** ()Method to delete all records. |
+| **V** | **get** ( **K** key)Method to get the value of a given key. |
+| **V** | **get** ( **K** key, boolean deleteRecordAfterRetrieving)Method to get the value of a given key and delete after retrieving. |
+| java.util.Map< **K** , **V** > | **getAll** ()Method to get all records. |
+| boolean | **put** ( **K** key, **V** value)Method to store a given key and a value. |
+| boolean | **put** ( **K** key, **V** value, long cacheExpiryTime, java.time.temporal.ChronoUnit cacheExpiryTimeUnit)Method to store a given key and a value with cache expiry time. |
+| boolean | **putAll** (java.util.Map< **K** , **V** > data)Method to store a given map into the cache. |
+| boolean | **putIfAbsent** ( **K** key, **V** value)Method to store a given key and a value if the key is absent. |
+| boolean | **putIfAbsent** ( **K** key, **V** value, long cacheExpiryTime, java.time.temporal.ChronoUnit cacheExpiryTimeUnit)Method to store a given key and a value with cache expiry time, if the key is absent. |
+| boolean | **truncate** ()Method to truncate. |
+
+
+**CacheLoader Interface**
+
+| **Modifier and Type** | **Method and Description** |
+|-----------------------|----------------------------|
+| **V** | **load** ( **K** key)Method to load cache. |
