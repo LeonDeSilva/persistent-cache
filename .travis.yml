@@ -1,0 +1,4 @@
+sudo: true
+language: java
+script:
+- mvn clean compile package
