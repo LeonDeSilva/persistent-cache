@@ -1,5 +1,11 @@
 # Persistent Cache
 
+<p align="center">
+    <a href="https://github.com/LeonDeSilva/persistent-cache/blob/master/LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="license" height="18">
+    </a>
+</p>
+
 
 **A Persistent Cache With TTL and Loading Cache Features**
 
