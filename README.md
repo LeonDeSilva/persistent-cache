@@ -1,10 +1,7 @@
 # Persistent Cache
 
-<p align="center">
-    <a href="https://github.com/LeonDeSilva/persistent-cache/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="license" height="18">
-    </a>
-</p>
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/LeonDeSilva/persistent-cache/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/LeonDeSilva/persistent-cache.svg?branch=master)](https://travis-ci.org/LeonDeSilva/persistent-cache)
 
 
 **A Persistent Cache With TTL and Loading Cache Features**
