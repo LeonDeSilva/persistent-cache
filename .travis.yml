@@ -2,3 +2,17 @@ sudo: true
 language: java
 script:
 - mvn clean compile package
+
+before_deploy:
+  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+
+deploy:
+  provider: releases
+  api_key:
+    secure: M1//36vq4xaFXQWi8gQiiJY9ntWpsLJEXNZG/dlbpJ5MKtcsCfs8S86AOYVYSlep2eao06ur1wVgtfl1cqB8NM3NxyH3I6rTqP9Lza8ElIr040gK5fuRXeK+5Gsfyxz4Qq/JE8cYAJFPJk0z7c8Hy4kt6mYPeF6KCMYV+ViehVAb+zcpE468T4HJF/QICZoXRkufr4MuOeOQ1rOL1ELU59acOvj4dt7MaJb9utF2gi+3aHbLQfDoGUo3jKU3ZlI0YiqycAFj71YfrflVvZYyiOGWa58VOb27thojL8aH+v4J6x80GxABYvUjKfYC/WkP4HIOsejntt/fj653TLUjiht0pAgM+yRZm7IxW07UmdjH08x+MxGzW7tCiFQf5kCN6sbglA6Er9xLNcK4gWh++DCwr+TFo5i1Tb/3q0nzI/SpVIbJeiUaZmv9DtNhXFgiU8dIGOM/EQ1YmSy8nRF6jcLV0sizUs1tnTsbA+uFngzRsPGDb6gnWW2iGmP+byHc+lw6rp9TukZShHlseZf3JrXdeqXiVNaCzbZa8UgUsnNcqm2iDktK1egJf56ZCN3xf/TG7lmLEpYYnr1wvfpkJE+W7qj84VT4Dz6KBxV8/oYZEbx827lgDIyHcUVDMhxkaiSv9SLvi4AMU5ri9DN6gGX6nwKjXJt0alVldt9TWZc=
+  file: target/persistent-cache-$project_version.jar
+  skip_cleanup: true
+  on:
+    repo: LeonDeSilva/persistent-cache
+  name: $project_version

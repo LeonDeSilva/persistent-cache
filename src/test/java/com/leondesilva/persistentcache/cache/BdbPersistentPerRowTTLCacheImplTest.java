@@ -1,16 +1,14 @@
 package com.leondesilva.persistentcache.cache;
 
 import com.leondesilva.persistentcache.error.PersistentCacheException;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.IOException;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+@Ignore
 public class BdbPersistentPerRowTTLCacheImplTest {
     PersistentCache<String, TestCacheObject> persistentCache;
     private static final String dbName = "PersistentCacheImplTestDB";
