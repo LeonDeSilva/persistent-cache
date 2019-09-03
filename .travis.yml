@@ -1,11 +1,24 @@
 sudo: true
 language: java
 
+cache:
+  directories:
+    - $HOME/.m2
+
 jdk:
   - openjdk8
 
+
+## export GPG details
+before_install:
+    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+
+install:
+    mvn --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+
 script:
-- mvn clean compile package
+  mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease
 
 before_deploy:
   - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
@@ -19,4 +32,6 @@ deploy:
   skip_cleanup: true
   on:
     repo: LeonDeSilva/persistent-cache
+    all_branches: true
+    tags: true
   name: $project_version
