@@ -87,7 +87,6 @@ Persistent Loading Caching supports cache loader and TTL features. When the data
 
 
 
-
 This library can be used whenever a caching mechanism is needed with state saving. 
 The library was built according to a research and development done for a production running application of a Recommendation Generation Engine. 
 This has simplified the persistent cache generation and is built with important features packed into one single library.
