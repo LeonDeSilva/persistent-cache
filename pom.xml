@@ -6,7 +6,7 @@
 
     <groupId>com.leondesilva.persistentcache</groupId>
     <artifactId>persistent-cache</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0-SNAPSHOT</version>
 
     <name>Persistent Cache</name>
     <url>https://github.com/LeonDeSilva/persistent-cache</url>
